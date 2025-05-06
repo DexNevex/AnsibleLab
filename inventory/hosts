@@ -1,0 +1,18 @@
+[core]
+core ansible_host=192.168.170.171
+
+[distro]
+distrib ansible_host=192.168.170.172
+
+[acx]
+acxL ansible_host=192.168.170.173
+acxR ansible_host=192.168.170.174
+
+[all:vars]
+ansible_network_os=ios
+ansible_user=admin
+ansible_password=Alderson@1a!
+ansible_connection=network_cli
+ftp_user = ftp_dex
+ftp_password = Alderson@1a!
+ftp_server = 192.168.170.10

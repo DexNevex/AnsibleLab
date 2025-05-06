@@ -1,0 +1,20 @@
+---
+
+- name: FTP Backup
+  hosts: all
+  vars:
+    backup_base_path: "/var/ftp/dex_ftp"  
+  gather_facts: true
+  tasks:
+
+    - name: copy running config
+      ansible.netcommon.cli_command:
+        command: "copy running-config ftp://{{ftp_user}}:{{ftp_password}}@{{ftp_server}}"
+        prompt:
+          - "Address or name of remote host \\[]?"
+          - "Destination filename \\[{{ ansible_net_hostname }}]\\ ?"
+        answer:
+          - "\r"
+          - "\r"
+        check_all: true
+        newline: true
