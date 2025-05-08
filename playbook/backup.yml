@@ -3,23 +3,20 @@
 - hosts: all 
  
   tasks:
-   - name: Backup Running Config 
+   - name: Retrieve Running Config 
      ios_command:
        commands: show running-config   
      register: config
 
    - name: Create a directory
      ansible.builtin.file:
-        path: /home/dex/configurations
+        path: /home/dex/configurations/{{ lookup('pipe', 'date +%F') }}
         state: directory
         mode: '0755'
      
-   - name: Save output 
+   - name: Save device configurations 
      copy:
        content: "{{config.stdout[0]}}"
-       dest: "../configurations/{{ ansible_net_hostname }}-config.txt"
+       dest: "../configurations/{{ lookup('pipe', 'date +%F') }}/{{ ansible_net_hostname }}-config.txt"
 
 
-   - name: Save running config
-     ios_config:
-        save_when: always 
