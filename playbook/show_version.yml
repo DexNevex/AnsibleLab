@@ -14,3 +14,7 @@
       debug:
         var: output.stdout_lines
     
+    - name: configure enable
+      ios_config:
+        lines:
+          - enable password Alderson@1a!

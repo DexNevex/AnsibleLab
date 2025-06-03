@@ -1,18 +1,27 @@
 [core]
-core ansible_host=192.168.170.171
+core ansible_host=192.168.170.80
 
 [distro]
-distrib ansible_host=192.168.170.172
+distrib1 ansible_host=192.168.170.81
+distrib2 ansible_host=192.168.170.82
 
 [acx]
-acxL ansible_host=192.168.170.173
-acxR ansible_host=192.168.170.174
+acx83 ansible_host=192.168.170.83
+acx84 ansible_host=192.168.170.84
+acx85 ansible_host=192.168.170.85
+acx86 ansible_host=192.168.170.86
 
 [all:vars]
 ansible_network_os=ios
-ansible_user=admin
+ansible_user=adminacme
 ansible_password=Alderson@1a!
 ansible_connection=network_cli
+ansible_become= true
+ansible_become_method= enable
+ansible_become_password=Alderson@1a!
+
+
 ftp_user = ftp_dex
 ftp_password = Alderson@1a!
 ftp_server = 192.168.170.10
+
