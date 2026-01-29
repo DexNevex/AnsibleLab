@@ -1,0 +1,15 @@
+## Copy software to target device 
+
+- hosts: all
+
+  tasks:
+    - name: Enable scp
+      ios_config:
+        lines: ip scp server enable
+    
+    - name: Copying image
+      net_put:
+        src: "~/TFTP/c2960x-universalk9-mz.152-7.E7.bin"
+        dest: "flash:/c2960x-universalk9-mz.152-7.E7.bin"
+      vars:
+        ansible_command_timeout: 1300
